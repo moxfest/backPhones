@@ -15,6 +15,12 @@ export class UserService {
 async getAll(){
 		return await this.prisma.user.findMany({where:{}})
 }
+async setAdmin(idd:number){
+	const id=idd
+	return this.prisma.user.update({where:{id},data:{
+			isAdmin:true
+		}})
+}
 	async byId(id: number, selectObject: Prisma.UserSelect = {}) {
 		const user = await this.prisma.user.findUnique({
 			where: {

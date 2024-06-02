@@ -21,6 +21,12 @@ let UserService = exports.UserService = class UserService {
     async getAll() {
         return await this.prisma.user.findMany({ where: {} });
     }
+    async setAdmin(idd) {
+        const id = idd;
+        return this.prisma.user.update({ where: { id }, data: {
+                isAdmin: true
+            } });
+    }
     async byId(id, selectObject = {}) {
         const user = await this.prisma.user.findUnique({
             where: {

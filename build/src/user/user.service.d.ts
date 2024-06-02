@@ -5,19 +5,20 @@ export declare class UserService {
     private prisma;
     constructor(prisma: PrismaService);
     getAll(): Promise<import(".prisma/client").User[]>;
+    setAdmin(idd: number): Promise<import(".prisma/client").User>;
     byId(id: number, selectObject?: Prisma.UserSelect): Promise<{
         createdAt?: Date;
         updatedAt?: Date;
-        name?: string;
-        reviews?: import(".prisma/client").Review[];
-        id?: number;
         email?: string;
         password?: string;
         isAdmin?: boolean;
+        name?: string;
         avatarPath?: string;
         phone?: string;
         orders?: import(".prisma/client").Order[];
+        reviews?: import(".prisma/client").Review[];
         favorites: import(".prisma/client").Product[];
+        id?: number;
         _count?: Prisma.UserCountOutputType;
     }>;
     updateProfile(id: number, dto: UserDto): Promise<import(".prisma/client").User>;
